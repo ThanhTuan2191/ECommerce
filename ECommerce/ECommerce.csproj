@@ -1710,6 +1710,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DistrictModel.cs" />
     <Compile Include="Models\ProvinceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CustomMembershipProvider\CustomMembershipProvider.cs" />

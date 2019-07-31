@@ -37,6 +37,30 @@ namespace ECommerce.Areas.Admin.Controllers
             });
         }
 
+        public JsonResult LoadDistrict(string ProvinceID)
+        {
+            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Assets/data/DVHC_data.xml"));
+            var xElement = xmlDoc.Descendants("DVHC")
+                .Elements("Cap").Where(x => x.Value.Equals("HUYEN"));
+            List<DistrictModel> districtList = new List<DistrictModel>();
+            DistrictModel districtModel = null;
+            foreach(var item in xElement)
+            {
+                if(item.Parent.Element("CapTren").Value.Equals(ProvinceID))
+                {
+                    districtModel = new DistrictModel();
+                    districtModel.DistrictID = item.Parent.Element("MaDVHC").Value;
+                    districtModel.DistrictName = item.Parent.Element("Ten").Value;
+                    districtList.Add(districtModel);
+                }
+            }
+            return Json(new
+            {
+                data = districtList,
+                status = true
+            });
+        }
+
         [AllowAnonymous]
         public ActionResult Demo()
         {
