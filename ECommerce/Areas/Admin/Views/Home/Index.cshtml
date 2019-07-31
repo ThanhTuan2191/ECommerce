@@ -3,6 +3,24 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+@model ECommerce.Areas.Admin.Models.LoginViewModel
 
+@section jsFooter{
+    <script src="/Assets/Admin/admin-js/provinceController.js"></script>
+}
 <h2>Index</h2>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.ProvinceID)
+    <div class="col-md-10">
+        @Html.DropDownList("ProvinceID", new SelectList(new string[] { }), new { @class = "form-control", @id = "ddlProvince" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DistrictID)
+    <div class="col-md-10">
+        @Html.DropDownList("DistrictID", new SelectList(new string[] { }), new { @class = "form-control", @id = "ddlDistrict" })
+    </div>
+</div>
 
